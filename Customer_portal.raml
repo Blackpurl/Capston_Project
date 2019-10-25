@@ -1,0 +1,88 @@
+#%RAML 1.0
+title: Customer_Mgt_Portal
+version: 1
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/8a6cadf4-75e1-47b4-a58d-fee814fdb696/ # baseUri: http://localhost:8081
+
+
+/users:
+  get:
+    displayName: Get All Users
+    description: Retrive a List of Users
+    responses:
+      200:
+        description: Success
+        body:
+          application/json:
+           example: !include /examples/customer-mgmt-example.json
+                          
+      400:
+        body: 
+          application/json:
+            example: !include /examples/Error.Msg.example.json
+            
+                
+  post:
+    displayName: Add User
+    body:
+      application/json:
+    responses: 
+      201:
+        description: User Added
+        body:
+          application/json:
+                example: !include /examples/customer-mgmt-example.json
+      400:
+        body:
+          application/json:
+            examples:
+              message:
+                     example: !include /examples/Error.Msg.example.json
+/{id}:
+  get:
+    displayName: Add Use By ID
+    responses:
+      202:
+        description: Success
+        body:
+          application/json:
+               example: !include /examples/customer-mgmt-example.json
+      400:
+        body:
+          application/json:
+            examples:
+              message:
+               example: !include /examples/Error.Msg.example.json
+              
+  delete:
+    displayName: Delet User
+    body:
+      application/json:
+    responses: 
+      203:
+        description: User Deleted
+        body:
+          application/json:
+               example: !include /examples/customer-mgmt-example.json
+      400:
+        body:
+          application/json:
+            examples:
+              message:
+               example: !include /examples/Error.Msg.example.json
+
+  put:
+    displayName: Update User By ID
+    body:
+      application/json:
+    responses:
+      204:
+        description: Success
+        body:
+          application/json:
+            examples:
+              message:
+                example: !include /examples/customer-mgmt-example.json
+      400:
+        body:
+          application/json:
+           example: !include /examples/Error.Msg.example.json
